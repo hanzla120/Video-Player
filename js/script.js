@@ -436,6 +436,10 @@ document.addEventListener("keypress",(e)=>{
 	volume_bar_container.addEventListener("mousedown",volumeDrag);
 	fullscreen_btn.addEventListener("click",toggleFullscreen);
 	// video.addEventListener("dblclick",toggleFullscreen);
+	video.onwaiting = function(){
+		const loader = document.querySelector(".loader");
+		loader.style.display = "block";
+	}
 let timer;
 video.addEventListener("click", e => {
   if (e.detail === 1) {
