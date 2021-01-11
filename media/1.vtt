@@ -1,0 +1,145 @@
+﻿WEBVTT
+
+00:00:00.510 --> 00:00:04.500
+All right guys so in this section we're going to get started with the dorm now up to this point we've
+
+00:00:04.500 --> 00:00:09.510
+been learning the main fundamentals of javascript we we've been doing you know working with the console
+
+00:00:09.510 --> 00:00:12.710
+looking at things like conditionals variables arrays.
+
+00:00:12.810 --> 00:00:16.340
+These are the building blocks of the language and they are critical.
+
+00:00:16.410 --> 00:00:22.980
+But now we're going to get to actually use this stuff in combination with the browser with with the
+
+00:00:22.980 --> 00:00:23.990
+dorm.
+
+00:00:24.000 --> 00:00:24.330
+All right.
+
+00:00:24.330 --> 00:00:27.760
+So what is the dorm it stands for the document object model.
+
+00:00:27.900 --> 00:00:32.160
+And it's basically a structured representation of an HMO document.
+
+00:00:32.190 --> 00:00:37.240
+It can be thought of kind of as a tree of nodes or elements created by the browser.
+
+00:00:37.260 --> 00:00:43.470
+OK and when I say node or element I mean in any of the each team all tags each time I'll tag the body
+
+00:00:43.470 --> 00:00:47.460
+tag each one's pretty much anything that is in the document.
+
+00:00:47.700 --> 00:00:52.800
+And we can use javascript to manipulate these DOM Elements or nodes.
+
+00:00:52.800 --> 00:00:58.320
+The Dom is object oriented meaning that each node has its own set of properties and methods that we
+
+00:00:58.320 --> 00:01:00.860
+can change we can add we can remove.
+
+00:01:01.260 --> 00:01:04.320
+You may have seen diagrams like this one right here.
+
+00:01:04.380 --> 00:01:09.970
+Now the browser gives us a window object and inside that we have a document object.
+
+00:01:10.040 --> 00:01:10.610
+OK.
+
+00:01:10.620 --> 00:01:17.040
+And this represents just that the loaded document or web page and then we have a root element underneath
+
+00:01:17.040 --> 00:01:21.490
+that which is the H team l tag and are the each element.
+
+00:01:21.550 --> 00:01:26.850
+Then from there we have body tags and we have a head tag and body tag which are actually siblings you
+
+00:01:26.850 --> 00:01:29.700
+can see they're on the same level in this tree.
+
+00:01:29.760 --> 00:01:35.520
+And then in the head we have things like metal tags we have our title in the body we have of course
+
+00:01:35.520 --> 00:01:42.780
+our output which is you know H-1 tags and links and each team of five semantic header tags for tags
+
+00:01:42.780 --> 00:01:44.070
+things like that.
+
+00:01:44.460 --> 00:01:51.450
+So if you are not too familiar with javascript but you've built each team all pages with some CSSA then
+
+00:01:51.480 --> 00:01:53.110
+this probably looks very familiar.
+
+00:01:53.110 --> 00:01:59.250
+You're just thinking it's an H team l page but what you probably don't know is that we can manipulate
+
+00:01:59.250 --> 00:02:06.300
+this stuff with javascript OK pretty easily and there are libraries like Jay Querrey which technically
+
+00:02:06.300 --> 00:02:11.940
+make it a little bit easier but it's really worth learning how to do this stuff with phenolic javascript
+
+00:02:11.940 --> 00:02:18.060
+especially now with queries selector and you can do things pretty much just as easily as you would with
+
+00:02:18.150 --> 00:02:22.540
+a query as far as Dom selection and manipulation.
+
+00:02:22.740 --> 00:02:29.490
+OK not using J.A.G. makes it faster we don't have the overhead of the extra of the extra library so
+
+00:02:29.490 --> 00:02:31.120
+it's definitely worth learning.
+
+00:02:31.140 --> 00:02:36.930
+One of the analogies that I like is that when you use a query to select elements from the DOM it's kind
+
+00:02:36.930 --> 00:02:39.890
+of like using a sledgehammer to kill a mosquito.
+
+00:02:39.900 --> 00:02:40.230
+All right.
+
+00:02:40.230 --> 00:02:42.450
+So we won't be using Jay queery in this course.
+
+00:02:42.450 --> 00:02:45.140
+It's going to be strictly vanilla javascript.
+
+00:02:45.150 --> 00:02:50.000
+Now what I want to do in the next video is i want to take a look at this object right here.
+
+00:02:50.000 --> 00:02:51.350
+The document object.
+
+00:02:51.370 --> 00:02:56.460
+OK so this has just a ton of different methods and properties and stuff attached to it.
+
+00:02:56.460 --> 00:03:01.890
+So we're going to just go ahead and console logs just a bunch of stuff from this just so we can take
+
+00:03:01.890 --> 00:03:03.390
+a look at what it contains.
+
+00:03:03.540 --> 00:03:09.030
+And then after that we'll move on to the different ways to select things from the DOM switches document
+
+00:03:09.030 --> 00:03:13.970
+dot get element by id and using our query selectors things like that.
+
+00:03:14.010 --> 00:03:14.280
+All right.
+
+00:03:14.280 --> 00:03:15.940
+So I will see you in the next video.
