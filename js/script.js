@@ -602,12 +602,21 @@ displayTimeLocalstorageVolumeFunc();
 video.onloadeddata = function() {
 	
   displayTimeLocalstorageVolumeFunc();
+  video.onloadstart = function(){
+	  const loader = document.querySelector(".loader");
+		loader.style.display = "block";
+  }
 	video.onwaiting = function(){
    const loader = document.querySelector(".loader");
 		loader.style.display = "block";
 	
 };
+
 video.onplaying = function(){
+    const loader = document.querySelector(".loader");
+		loader.style.display = "none";
+};
+video.oncanplay = function(){
     const loader = document.querySelector(".loader");
 		loader.style.display = "none";
 };
