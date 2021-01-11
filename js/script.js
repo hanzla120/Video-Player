@@ -577,26 +577,32 @@ caption_btn.addEventListener("click",toggleCaption);
 
 }
 
-
+ video.addEventListener('progress', function() {
+      const bufferedEnd = video.buffered.end(video.buffered.length - 1);
+      const duration =  video.duration;
+      if (duration > 0) {
+		  let percent = ((bufferedEnd / duration)*100);
+		 progress_bar_buffer.style.width = `${percent}%`;
+      }
+    });
 	
-	video.addEventListener('progress', function(e) {
-    let percent = null;
-    // FF4+, Chrome
-    if (video && video.buffered && video.buffered.length > 0 && video.buffered.end && video.duration) {
-        percent = video.buffered.end(0) / video.duration;
-    } else if (video && video.bytesTotal != undefined && video.bytesTotal > 0 && video.bufferedBytes != undefined) {
-        percent = video.bufferedBytes / video.bytesTotal;
-    }
+	// video.addEventListener('progress', function(e) {
+    // let percent = null;
+    // if (video && video.buffered && video.buffered.length > 0 && video.buffered.end && video.duration) {
+        // percent = video.buffered.end(0) / video.duration;
+    // } else if (video && video.bytesTotal != undefined && video.bytesTotal > 0 && video.bufferedBytes != undefined) {
+        // percent = video.bufferedBytes / video.bytesTotal;
+    // }
 
-    if (percent !== null) {
-        percent = 100 * Math.min(1, Math.max(0, percent));
+    // if (percent !== null) {
+        // percent = 100 * Math.min(1, Math.max(0, percent));
 
-		progress_bar_buffer.style.width = `${percent}%`;
+		// progress_bar_buffer.style.width = `${percent}%`;
         
 
-    }
+    // }
 
-}, false);
+// }, false);
 
 displayTimeLocalstorageVolumeFunc();
 video.onloadeddata = function() {
