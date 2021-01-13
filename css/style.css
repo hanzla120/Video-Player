@@ -108,6 +108,7 @@ video{
 	width:100%;
 	display:block;
 	pointer-events:none;
+	z-index: 26;
 }
 .caption_window span.caption_text{
 	overflow-wrap: normal;
@@ -123,6 +124,17 @@ video{
 .panel_height{
 	height:100%;
 }
+.player-gradient-padding{
+	position: absolute;
+	width:100%;
+	bottom: 0;
+	height: 18rem;
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAACzCAYAAABIF3b3AAABCElEQVQ4T2XI10cFAACF8dvee++67b33uM17b1MkkSSSSBJJJIkkkkQSSSKJ9EfmOw/npfPw8zmBwL/F8IhYiDPxlEgwiVSSSaZEikml0kw6JTJMJpVlsimRY3IpkQf5poAShaaIKjYllCiFMlNOiQpTSVWZakrUmCAlaqHO1FOiwTRSTaaZEi2mlWoz7ZToMJ1Ul+mmRI/ppfpMPyUGzCA1ZIYpMWJGqTEzTokJE6ImzRQlps0MNWvmKBE2ESpq5imxYBapJbNMrcAqrME6bMAmbME27MAu7ME+HMAhHMExnMApnME5XMAlXME13MAt3ME9PMAjPMEzvMArvME7fMAnfME3/MDvH5ajKM2DpwAVAAAAAElFTkSuQmCC");
+	background-repeat: repeat-x;
+	background-position: bottom;
+	pointer-events:none;
+	z-index: 24;
+}
 .player-controls{
 	width:100%;
 	position:absolute;
@@ -130,14 +142,15 @@ video{
 	bottom:0;
 	width:100%;
 	height: 5.5rem;
-	background: linear-gradient(to top, #252525, 66%, #17171752);
+	/* background: linear-gradient(to top, #252525, 66%, #17171752); */
 	display:flex;
 	transition: opacity 0.3s ease-in;
+	z-index: 25;
 }
 .progress_bar_container{
 	width: calc(100% - 3rem);
 	height:3px;
-	background: rgb(99 99 99 / 70%);
+	background: rgb(255 255 255 / 35%);
 	position:absolute;
 	top:0;
 	left: 1.5rem;
@@ -165,7 +178,7 @@ video{
 	z-index:44;
 	width:60%;
 	height:100%;
-	background: #cacaca59;
+	background: rgb(255 255 255 / 40%);
 }
 .progress_bar_indicator{
 	position:absolute;
@@ -226,10 +239,10 @@ video{
 	left: 5.2rem;
 	top: 50%;
 	transform: translateY(-50%);
-	width: 8rem;
-	height: .4rem;
+	width: 6rem;
+	height: .3rem;
 	border-radius: .5rem;
-	background: rgb(0 0 0 / 52%);
+	background: #cacaca59;
 	cursor: pointer;
 }
 .volume_bar_padding{
@@ -253,8 +266,8 @@ video{
 	right: -.7rem;
 	top: 50%;
 	transform: translateY(-50%);
-	width:1.4rem;
-	height:1.4rem;
+	width: 1.2rem;
+	height: 1.3rem;
 	background: white;
 	border-radius: 50%;
 	z-index: 2;
@@ -262,7 +275,7 @@ video{
 }
 .time_container{
 	position:absolute;
-	left: 20.5rem;
+	left: 18.5rem;
 	width: 15rem;
 	height:5.5rem;
 }
@@ -272,7 +285,7 @@ video{
 	transform:translateY(-50%);
 	font-size: 1.6rem;
 	font-family: 'Lato', sans-serif;
-	color: #cacacae3;
+	color: #ddd;
 	text-shadow: .5rem .5rem .8rem #000000c2;
 }
 
