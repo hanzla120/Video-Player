@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap'); */
 *{
 	
 	margin:0;
@@ -136,13 +136,20 @@ video{
 }
 .progress_bar_container{
 	width: calc(100% - 3rem);
-	height:5px;
-	background: rgb(0 0 0 / 70%);
+	height:3px;
+	background: rgb(99 99 99 / 70%);
 	position:absolute;
 	top:0;
 	left: 1.5rem;
 	z-index:33;
 	cursor: pointer;
+}
+.progress_bar_padding{
+	position:absolute;
+	left:0;
+	top: -8px;
+	width:100%;
+	padding-top: 16px;
 }
 .progress_bar_play{
 	position:absolute;
@@ -171,6 +178,7 @@ video{
 	border-radius: 50%;
 	cursor: pointer;
 	z-index: 66;
+	display:none;
 }
 
 .controls-group{
@@ -219,10 +227,17 @@ video{
 	top: 50%;
 	transform: translateY(-50%);
 	width: 8rem;
-	height: .6rem;
+	height: .4rem;
 	border-radius: .5rem;
 	background: rgb(0 0 0 / 52%);
 	cursor: pointer;
+}
+.volume_bar_padding{
+	position:absolute;
+	left:0;
+	bottom: -.5rem;
+	width:100%;
+	padding-top: 1.6rem;
 }
 .volume_bar{
 	position:absolute;
@@ -255,9 +270,9 @@ video{
 	position:absolute;
 	top: 49%;
 	transform:translateY(-50%);
-	font-size: 1.8rem;
+	font-size: 1.6rem;
 	font-family: 'Lato', sans-serif;
-	color: #ffffff;
+	color: #cacacae3;
 	text-shadow: .5rem .5rem .8rem #000000c2;
 }
 
