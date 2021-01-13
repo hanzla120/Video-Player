@@ -24,6 +24,7 @@ const caption_window = document.querySelector(".caption_window");
 const caption_btn = document.querySelector(".caption_btn");
 const caption_text = document.querySelector(".caption_text");
 const cc_btn_style = document.querySelector(".cc_btn_style");
+const player_gradient_padding = document.querySelector(".player-gradient-padding");
 
 
 
@@ -42,11 +43,13 @@ function showControlsStyle(){
 		player_controls.style.opacity = "1";
 		caption_window.style.bottom = "65px";
 		video.style.cursor = "default";
+		player_gradient_padding.style.display = "block";
 }
 function hideControlsStyle(){
 		player_controls.style.opacity = "0";
 		caption_window.style.bottom = "12px";
 		video.style.cursor = "none";
+		player_gradient_padding.style.display = "none";
 }
 
 
@@ -557,6 +560,7 @@ function resetInactivityTimer(){
 // disappear cursor and controls  events
 player_controls.onmouseenter = function(){
 	window.clearTimeout(inactivityTimer);
+	
 };
 progress_bar_container.onmouseenter = showControlsBarStyle;
 progress_bar_container.onmouseleave = hideControlsBarStyle;
