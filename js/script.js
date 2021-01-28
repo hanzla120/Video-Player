@@ -25,7 +25,9 @@ const caption_btn = document.querySelector(".caption_btn");
 const caption_text = document.querySelector(".caption_text");
 const cc_btn_style = document.querySelector(".cc_btn_style");
 const player_gradient_padding = document.querySelector(".player-gradient-padding");
-
+const video_container = document.querySelector(".video_container");
+const progress_tooltip_container = document.querySelector(".progress_tooltip_container");
+const tooltip_text = document.querySelector(".tooltip_text");
 
 
 // all functions 
@@ -34,21 +36,23 @@ const player_gradient_padding = document.querySelector(".player-gradient-padding
 function showControlsBarStyle(){
 	progress_bar_container.style.height="5px";
 	progress_bar_play.children[0].style.display = "block";
+	progress_tooltip_container.style.display = "block";
 }
 function hideControlsBarStyle(){
 	progress_bar_container.style.height="3px";
 	progress_bar_play.children[0].style.display = "none";
+	progress_tooltip_container.style.display = "none";
 }
 function showControlsStyle(){
 		player_controls.style.opacity = "1";
 		caption_window.style.bottom = "65px";
-		video.style.cursor = "default";
+		video_container.style.cursor = "default";
 		player_gradient_padding.style.display = "block";
 }
 function hideControlsStyle(){
 		player_controls.style.opacity = "0";
-		caption_window.style.bottom = "12px";
-		video.style.cursor = "none";
+		caption_window.style.bottom = "22px";
+		video_container.style.cursor = "none";
 		player_gradient_padding.style.display = "none";
 }
 
@@ -159,6 +163,35 @@ function displayTime(time) { //get current time and duration  function
   // }
   // return `${minutes}:${seconds}`;
 }
+// hover and mousemove on progressbar container function 
+
+function toolTipCurrentTimeMousemove(e){
+	
+	
+	let percent;
+      percent = getElementPercentage(e, progress_bar_container);
+      if (percent < 0) {
+        percent = 0;
+      } else if (percent > 100) {
+        percent = 100;
+      }
+	  if(percent < 4){
+		  progress_tooltip_container.style.marginLeft = `0px`;
+	  }else if(percent > 95){
+		  progress_tooltip_container.style.marginLeft = `-60px`;
+		  
+	  }else{
+		  progress_tooltip_container.style.marginLeft = `-30px`;
+	  }
+	
+	progress_tooltip_container.style.left = `${percent}%`;
+	
+	
+	let getHoverTime = percent / 100 * video.duration;
+	tooltip_text.textContent = `${displayTime(getHoverTime)}`;
+}
+
+
 // change progressBar when click
 function progressBarChange(e){
 	const getMousePosition = getElementPercentage(e,progress_bar_container);
@@ -185,11 +218,14 @@ function progressMoveHandler(e){
       }
 	progress_bar_play.style.width = `${percent}%`;
 	video.currentTime = video.duration * percent / 100;
+	showControlsBarStyle();
+	toolTipCurrentTimeMousemove(e);
 }
 function progressStopHandler(e){
+	
 	 document.removeEventListener('mousemove', progressMoveHandler);
       document.removeEventListener('mouseup', progressStopHandler);
-	
+	  
 }
 
 
@@ -269,8 +305,8 @@ function toggleFullscreen(){
 	}else{
 		player.requestFullscreen().catch(console.log);
 		fullscreen_btn.innerHTML = `<svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%"><g><path class="icon-svg-fill" d="m 14,14 -4,0 0,2 6,0 0,-6 -2,0 0,4 0,0 z"></path></g><g><path class="icon-svg-fill" d="m 22,14 0,-4 -2,0 0,6 6,0 0,-2 -4,0 0,0 z" id="icon-id-577"></path></g><g class="icon-fullscreen-button-corner-0"><use class="icon-svg-shadow" xlink:href="#icon-id-578"></use><path class="icon-svg-fill" d="m 20,26 2,0 0,-4 4,0 0,-2 -6,0 0,6 0,0 z" id="icon-id-578"></path></g><g class="icon-fullscreen-button-corner-1"><use class="icon-svg-shadow" xlink:href="#icon-id-579"></use><path class="icon-svg-fill" d="m 10,22 4,0 0,4 2,0 0,-6 -6,0 0,2 0,0 z" id="icon-id-579"></path></g></svg>`;
-		caption_text.style.fontSize = "23px";
-		caption_text.style.padding = "10px";
+		caption_text.style.fontSize = "30px";
+		caption_text.style.padding = "20px";
 		video.classList.add("fullscreen-video");
 	}
 	
@@ -484,6 +520,7 @@ document.addEventListener("keypress",(e)=>{
 	video.addEventListener("ended",video_ended);
 	video.addEventListener("timeupdate",seekTime_func);
 	progress_bar_container.addEventListener("click",progressBarChange);
+	progress_bar_container.addEventListener("mousemove",toolTipCurrentTimeMousemove);
 	progress_bar_container.addEventListener("mousedown",progressDrag);
 	volume_bar_container.addEventListener("click",volumeBarChange);
 	volume_bar_container.addEventListener("mousedown",volumeDrag);
@@ -491,7 +528,7 @@ document.addEventListener("keypress",(e)=>{
 	// video.addEventListener("dblclick",toggleFullscreen);
 	
 let timer;
-video.addEventListener("click", e => {
+video_container.addEventListener("click", e => {
   if (e.detail === 1) {
     timer = setTimeout(() => {
       play_pause_func();
@@ -531,7 +568,7 @@ function hideControlsEventsFunc(){
 		showControlsStyle();
 	}else{
 		hideControlsStyle();
-		
+		hideControlsBarStyle();
 	}
 }
 
@@ -544,6 +581,7 @@ function startInactivityTimer(){
 function doInactivity(){
 	if(video.paused == false){
 		hideControlsStyle();
+		hideControlsBarStyle();
 	}
 	
 	
@@ -566,7 +604,7 @@ progress_bar_container.onmouseenter = showControlsBarStyle;
 progress_bar_container.onmouseleave = hideControlsBarStyle;
 player.onmouseenter = showControlsEventsFunc;
 player.onmouseleave = hideControlsEventsFunc;
-video.onmousemove = resetInactivityTimer;
+video_container.onmousemove = resetInactivityTimer;
 
 
 // set volume in localstorage 
